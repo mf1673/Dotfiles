@@ -1,0 +1,231 @@
+//--------------------------------------------//
+//  __        __          ____                //
+//  \ \      / /_ _ _   _| __ )  __ _ _ __    //
+//   \ \ /\ / / _` | | | |  _ \ / _` | '__|   //
+//    \ V  V / (_| | |_| | |_) | (_| | |      //
+//     \_/\_/ \__,_|\__, |____/ \__,_|_|      //
+//                  |___/                     //
+// by mf (2024)                               //
+//--------------------------------------------//
+
+{
+    "layer": "top",       // Waybar at top layer
+    "position": "top",    // Waybar position (top|bottom|left|right)
+    "height": 30,         // Waybar height (to be removed for auto height)
+    "width": 1590,        // Waybar width
+    "spacing": 8,         // Gaps between modules (px)
+
+
+    "modules-left": [
+        
+        "custom/exit",
+        "cpu",
+	"memory",
+        "disk",
+        "custom/cleaning"
+       // "custom/updates"	
+        
+    ],
+
+
+    "modules-center": [
+        "hyprland/workspaces"
+        //"dynamcMedia"
+    ],
+
+
+    "modules-right": [
+                        
+        //"custom-wallpaper"
+        "custom/vpn",
+	"network",
+	"bluetooth",
+        "pulseaudio",     
+        "battery",
+	"clock"
+                
+    ],
+//--------------------- LEFT SIDE ----------------------
+
+
+
+//dynamic island spotify video  
+//theme-desktop-switcher : pywal script / hyprpaper
+//calculatror    
+//wallpaper changer 
+
+
+
+//Updates
+    "custom/updates":{
+        "format": "󰂪",
+       // "on-click": "kitty -e ~/.config/scripts/Updates.sh",
+        "tooltip": false
+  },
+
+//updates count
+//  "custom/updates": {
+//      "format": "  {}",
+//      "tooltip-format": "{}",
+//      "escape": true,
+//      "return-type": "json",       
+//      "exec": "~/.config/scripts/updates.sh",
+//      "restart-interval": 60,
+//      "on-click": "kitty -e ~/.config/scripts/installupdates.sh",
+//      "tooltip": false
+//  },
+//"custom/updates": {
+//    "format": "{} {icon}",
+//    "return-type": "json",
+//    "format-icons": {
+//        "has-updates": "󱍷",
+//        "updated": "󰂪"
+//    },
+//   "exec-if": "which waybar-module-pacman-updates",
+//    "exec": "waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 300"
+//},
+
+
+
+//vpn
+    "custom/vpn": {
+        "format": "󰒄 ",
+        "on-click": "kitty -e  ~/.config/scripts/VPN.sh",
+        "tooltip": false
+    },
+
+
+//cleaning
+    "custom/cleaning":{
+        "format": "󰃢 ",
+        "on-click": "kitty -e ~/.config/scripts/Cleaning.sh",
+        "tooltip": false
+ 
+    },
+
+
+//wlogout
+    "custom/exit": {
+        "format": " ",
+        "on-click": "wlogout",
+        "tooltip": false
+    },
+
+//workspaces
+    "hyprland/workspaces" : {         
+        "on-click": "activate",
+        "active-only": false,
+        "all-outputs": true,
+        "format": "{}",
+        "format-icons": {
+			"urgent": "",
+			"active": "",
+			"default": ""
+        },
+        "persistent-workspaces": {
+             "*": 1
+        }       
+    },
+
+
+//disk
+    "disk": {
+        "interval": 30,
+        "format": "  {specific_used:0.2f}GiB ",
+        "unit":"GiB",
+	"path": "/"
+        //"on-click": "kitty -e htop"
+    },
+ 
+//ram 
+    "memory": {
+        "interval" : 30,
+	"format": "  {used:0.1f}GB "
+        //"on-click": "kitty -e htop"
+    },
+
+//cpu
+    "cpu": {
+        "format": "  {}%"
+        //"on-click": "kitty -e htop"
+    },
+
+
+
+
+//pulse audio
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [""," "," "," "]
+        },
+        "on-click": "pavucontrol"
+    },
+
+
+//bluetooth
+    "bluetooth": {
+       "format-disabled": "",
+       "format-off": "",
+       "interval": 30,
+       "on-click": "bluez",
+       "format-no-controller": ""
+    },
+
+
+//network
+    "network": {
+        "format": "{ifname}",
+        "format-wifi": "   {signalStrength}%",
+        "format-ethernet": "  {ipaddr}",
+        "format-disconnected": "Not connected", //An empty format will hide the module.
+        "tooltip-format": " {ifname} via {gwaddri}",
+        "tooltip-format-wifi": "   {essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": "  {ifname} ({ipaddr}/{cidr})",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 50,
+        "on-click": "alacritty -e nmtui"
+    },
+
+//battery
+    "battery": {
+        "states": {
+            "good": 75,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon}  {time}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["󰂎","󰁺","󰁻","󰁼","󰁽","󰁾","󰁿","󰂀","󰂁","󰂂","󰁹"]
+    },
+
+
+
+//clock
+    "clock": {
+        "interval": 1,
+        "timezone": "Europe/Rome",
+	"format": "{:%H:%M:%S}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%d-%m-%Y}",
+        "font": "GohuFont Nerd Font 12"
+    }
+}
+
+
