@@ -342,3 +342,7 @@ bind ^K "{mark}{end}{zap}" main
 bind ^U "{mark}{home}{zap}" main
 bind ^Z undo main
 bind ^Y redo main
+
+
+# Enable on MacOS
+# include "/opt/homebrew/Cellar/nano/*/share/nano/*.nanorc"
