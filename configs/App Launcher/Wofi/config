@@ -1,9 +1,0 @@
-prompt=
-color=.config/wofi/colors
-allow_images=true
-insensitive=true
-no_actions=true
-key_up=Control_L-p
-key_down=Control_L-n
-location=center
-columns=2

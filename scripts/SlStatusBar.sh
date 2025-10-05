@@ -57,7 +57,7 @@ volume() {
     else
         simbolo=" "
     fi
-    echo "$simbolo $livello%"
+    echo "$simbolo $livello"
 }
 
 #=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
@@ -193,7 +193,7 @@ status(){
    
   echo "$delim"
   volume
- 
+
   echo "$delim"
   batteria
 

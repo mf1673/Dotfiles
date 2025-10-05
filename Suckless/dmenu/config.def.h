@@ -1,5 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 /* Default settings; can be overriden by command line. */
+
 static int topbar = 1;                      /* -b  option; if 0, dmenu appears at bottom     */
 static const unsigned int alpha = 0xbf;     /* Amount of opacity */
 static int centered = 1;                    /* -c option; centers dmenu on screen */
@@ -11,19 +12,20 @@ static const char *fonts[] = {
 };
 static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
 static const char *colors[SchemeLast][2] = {
-	/*                    fg        bg   */
-	[SchemeNorm] = { "#c5c8c6", "#1d1f21" },
-	[SchemeSel]  = { "#eeeeee", "#005577" },
-	[SchemeOut]  = { "#000000", "#00ffff" },
+	/*     fg         bg       */
+	[SchemeNorm]          = { "#bbbbbb", "#222222" },
+	[SchemeSel]           = { "#eeeeee", "#005577" },
+	[SchemeOut]           = { "#000000", "#00ffff" },
 };
-static const unsigned int  alphas[SchemeLast][2] = {
-       [SchemeNorm] = { OPAQUE, alpha },
-       [SchemeSel]  = { OPAQUE, alpha },
-       [SchemeOut]  = { OPAQUE, alpha },
+static const unsigned int alphas[SchemeLasts][2] = {
+        [SchemeNorm] = { OPAQUE, alpha },
+        [SchemeNorm] = { OPAQUE, alpha },
+        [SchemeOut]  = { OPAQUE, alpha },
 };
-/* -l option; if nonzero, dmenu uses vertical list with given number of lines */
-static unsigned int lines      = 10;
-static unsigned int columns    = 1;
+
+/* -l and -g  option; controls number of lines and columns in grid if > 0 */
+static unsigned int columns      = 0;
+
 /*
  * Characters not considered part of a word while deleting words
  * for example: " /?\"&[]"
